@@ -1,0 +1,12 @@
+<label id="file-label" class="p-2 rounded border border-white cursor-pointer" title="Add report">
+    {% include "plus_icon.html" %}
+    <input hx-post="{% url 'file' %}" 
+            hx-encoding='multipart/form-data'
+            hx-swap="outerHTML" 
+            hx-target="#file-label"
+            name="file" 
+            type="file" 
+            class="hidden" 
+            accept=".xml, .zip, .gzip, .gz">
+    {% include "messages.html" %}
+</label>

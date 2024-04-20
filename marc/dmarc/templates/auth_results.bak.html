@@ -1,0 +1,11 @@
+{% extends "card.html" %}
+{% block cardclassextra %}{% endblock %}
+{% block cardcontent %}
+<div class="flex flex-col gap-5">
+    <h2 class="text-xl font-bold">{{ title }}</h2>
+    <canvas id="{{ id }}"></canvas>
+    <script>
+    {% include "auth_results_chart.js" with id=id labels=labels data=data background_colors=background_colors %}
+    </script>
+</div>
+{% endblock %}

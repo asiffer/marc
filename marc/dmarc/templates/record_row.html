@@ -1,0 +1,15 @@
+{% with td_class="p-2 text-right group-hover:bg-gray-100 overflow-hidden cursor-pointer transition-colors duration-100" %}
+{% with pass_icon_class="h-5 inline-block stroke-emerald-500" fail_icon_class="h-5 inline-block stroke-red-500" %}
+<tr class="{{ class }} group" hx-get="{% url 'record-details' record.id %}" hx-swap="outerHTML" hx-target="#main" hx-push-url="true">
+    <td class="{{ td_class }} max-w-[150px] text-ellipsis rounded-l-lg">{{ record.identifiers.envelope_to|default_if_none:"" }}</td>
+    <td class="{{ td_class }} max-w-[150px] text-ellipsis">{{ record.identifiers.envelope_from|default_if_none:"" }}</td>
+    <td class="{{ td_class }}">{{ record.identifiers.header_from|default_if_none:"" }}</td>
+    <td class="{{ td_class }} font-mono">{{ record.row.source_ip }}</td>
+    <td class="{{ td_class }} font-mono">{{ record.row.count }}</td>
+    <td class="{{ td_class }}">{{ record.row.policy_evaluated.disposition }}</td>
+    <td class="{{ td_class }}">{% if record.row.policy_evaluated.spf == "pass" %}{% include "pass_icon.html" with class=pass_icon_class %}{% else %}{% include "fail_icon.html" with class=fail_icon_class %}{% endif %}</td>
+    <td class="{{ td_class }}">{% if record.row.policy_evaluated.dkim == "pass" %}{% include "pass_icon.html" with class=pass_icon_class %}{% else %}{% include "fail_icon.html" with class=fail_icon_class %}{% endif %}</td>
+    <td class="{{ td_class }} rounded-r-lg">{% if record.row.policy_evaluated.dmarc %}{% include "pass_icon.html" with class=pass_icon_class %}{% else %}{% include "fail_icon.html" with class=fail_icon_class %}{% endif %}</td>
+</tr>
+{% endwith %}
+{% endwith %}

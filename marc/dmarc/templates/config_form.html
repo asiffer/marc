@@ -1,0 +1,5 @@
+<form hx-post="{% url 'config-form' %}" class="flex flex-col gap-5 items-start {% if form.errors %}error{% endif %}" hx-swap="outerHTML" >
+    {% csrf_token %}
+    {{ form.as_div }}
+    <input class="button mt-5 self-end" type="submit" value="Update"/>
+</form>

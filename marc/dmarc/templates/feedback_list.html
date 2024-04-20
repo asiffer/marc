@@ -1,0 +1,41 @@
+{% extends "main.html" %}
+{% block maintitle %}Feedbacks{% endblock %}
+{% block maincontent %}
+<div class="overflow-y-scroll px-5 border-y border-y-gray-300">
+    <table id="feedbacks-table" class="table table-auto w-full text-sm">
+        <thead class="sticky top-0 font-medium font-mono bg-white border-spacing-y-0">
+            {% with td_class="p-2 text-right" %}
+            <tr>
+                <td class="{{ td_class }}" colspan="1"></td>
+                <td class="{{ td_class }}" colspan="1"></td>
+                <td class="{{ td_class }}" colspan="1"></td>
+                <td class="{{ td_class }}" colspan="1"></td>
+                <td class="{{ td_class }} border-b border-b-gray-100" colspan="2">auth</td>
+                <td class="{{ td_class }} border-b border-b-gray-100" colspan="3">dmarc</td>
+            <tr>
+            <tr class="border-b border-b-gray-100">
+                <td class="{{ td_class }}">report_id</td>
+                <td class="{{ td_class }}">organization</td>
+                <td class="{{ td_class }}">from</td>
+                <td class="{{ td_class }}">to</td>
+                <td class="{{ td_class }}">spf</td>
+                <td class="{{ td_class }}">dkim</td>
+                <td class="{{ td_class }}">spf</td>
+                <td class="{{ td_class }}">dkim</td>
+                <td class="{{ td_class }}">overall</td>
+            <tr>
+            {% endwith %}
+        </thead>
+        <tbody class="text-gray-600">
+        {% for feedback in feedbacks %}
+            <tr class="h-8 bg-slate-200 w-full" hx-get="{% url 'feedback-row' feedback.id %}" hx-trigger="intersect once" hx-swap="outerHTML"></tr>
+        {% endfor %}
+        {% comment %} {% for feedback in feedbacks %}
+            <tr class="group" onclick="document.location.href='{% url "feedback-details" feedback.id %}'">
+            <turbo-frame id="feedback-{{ feedback.id }}" src="{% url 'feedback-row' feedback.id %}" loading="lazy"></turbo-frame>
+            </tr>
+        {% endfor %} {% endcomment %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

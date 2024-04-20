@@ -1,0 +1,28 @@
+{% extends "main.html" %}
+{% block maintitle %}Records{% endblock %}
+{% block maincontent %}
+<div class="relative overflow-y-scroll px-5">
+    <table id="records-table" class="w-full text-sm">
+        <thead class="sticky top-0 bg-white border-b-2 border-b-gray-100 font-medium font-mono">
+            {% with td_class="p-2 text-right" %}
+            <tr>
+                <td class="{{ td_class }}">envelope_to</td>
+                <td class="{{ td_class }}">envelope_from</td>
+                <td class="{{ td_class }}">header_from</td>
+                <td class="{{ td_class }}">source_ip</td>
+                <td class="{{ td_class }}">count</td>
+                <td class="{{ td_class }}">disposition</td>
+                <td class="{{ td_class }}">spf</td>
+                <td class="{{ td_class }}">dkim</td>
+                <td class="{{ td_class }}">dmarc</td>
+            <tr>
+            {% endwith %}
+        </thead>
+        <tbody class="text-gray-600">
+        {% for record in records %}
+            <tr class="h-8 bg-slate-200 w-full" hx-get="{% url 'record-row' record.id %}" hx-trigger="intersect once" hx-swap="outerHTML"></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

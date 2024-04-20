@@ -1,0 +1,17 @@
+{% extends template_name|default_if_none:"base.html" %} {% block bodycontent %}
+
+<div id="main" class="h-full w-full flex flex-row justify-center">
+  <div>
+  </div>
+  <div class="relative max-w-[1000px] flex flex-col gap-5 pt-28 pb-10">
+    {% block maincontent %} {% endblock %}
+  </div>
+  <div class="relative overflow-visible">
+    <div
+      class="absolute vertical text-[210px] font-black text-slate-100 leading-none"
+    >
+      {% block maintitle %}{% endblock %}
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Marc</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+        <link rel="stylesheet" href="{% static 'jetbrainsmono.css' %}">
+        <link rel="stylesheet" href="{% static 'neuehaasgrotesk.css' %}">
+        <link rel="stylesheet" href="{% static 'toastify.min.css' %}">
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+        <script src="{% static 'htmx.org@1.9.11.js' %}"></script>
+        <script src="{% static 'morphdom-swap.js' %}"></script>
+        <script src="{% static 'chart.umd.min.js' %}"></script>
+        
+    </head>
+    <body class="h-screen w-screen overflow-hidden text-gray-800 bg-white" hx-ext="morphdom-swap">
+        {% include "messages.html" %}
+        <div class="relative h-full w-full max-h-full">
+            {% include "navbar.html" %}
+            {% block bodycontent %}{% endblock %}
+        <div>
+    </body>
+    <footer>
+        <script>
+            document.body.addEventListener('htmx:config-request', (event) => {
+                console.log(event);
+                event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+            })
+        </script>
+        <script type="text/javascript" src="{% static 'toastify.js' %}"></script>
+    </footer>
+</html> 

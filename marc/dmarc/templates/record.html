@@ -1,0 +1,21 @@
+{% extends "main.html" %}
+
+{% block maincontent %}
+<div class="w-full flex flex-col gap-5">
+    <div class="w-full flex flex-row gap-3">
+        <div class="text-gray-400">Feedback:</div>
+        <a class="block" href="{% url "feedback-details" record.feedback.id %}">#{{ record.feedback.id }} - {{ record.feedback.report_metadata.org_name }} - {{ record.feedback.report_metadata.date_range_end }}</a>
+    </div>
+    <div class="flex flex-row flex-wrap gap-5">
+        {% include "row.html" with row=record.row %}
+        {% include "identifiers.html" with identifiers=record.identifiers %}
+    </div>
+    <div class="flex flex-row gap-5">
+        {% include "spf_auth_result.html" with spf=record.auth_results.spf %}
+        {% include "dkim_auth_result.html" with dkim=record.auth_results.dkim %}
+    </div>
+    <div>
+        {% include "policy_evaluated.html" with policy_evaluated=record.row.policy_evaluated %}
+    </div>
+</div>
+{% endblock %}

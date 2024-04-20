@@ -1,0 +1,19 @@
+{% extends "card_table.html" %}{% load dmarc_extras %}
+{% block cardtitle %}Policy Evaluated (DMARC){% endblock %}
+{% block cardtablerows %}
+<tr>
+    <td>SPF</td>
+    <td>{% if policy_evaluated.spf == "pass" %}{% include "pass_icon.html" with class=pass_icon_class %}{% else %}{% include "fail_icon.html" with class=fail_icon_class %}{% endif %}</td>
+</tr>
+<tr>
+    <td>DKIM</td>
+    <td>{% if policy_evaluated.dkim == "pass" %}{% include "pass_icon.html" with class=pass_icon_class %}{% else %}{% include "fail_icon.html" with class=fail_icon_class %}{% endif %}</td>
+</tr>
+<tr>
+    <td>Disposition</td>
+    <td>{{ policy_evaluated.disposition }}</td>
+</tr>
+{% endblock %}
+{% block cardextra %}
+{{ policy_evaluated|class_help_text }}
+{% endblock %}

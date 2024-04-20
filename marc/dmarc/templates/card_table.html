@@ -1,0 +1,14 @@
+{% extends "card.html" %}{% load dmarc_extras %}
+{% block cardcontent %}
+<div class="flex flex-col gap-3">
+    <h2 class="text-xl font-bold">{% block cardtitle %}{% endblock %}</h2>
+    <div class="w-full">
+        <table class="table card-table border-separate border-spacing-x-2">
+            {% block cardtablerows %}{% endblock %}
+        </table>
+    </div>
+    <div class="text-gray-500 text-sm text-justify space-y-1">
+        {% block cardextra %}{% endblock %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "card_table.html" %}{% load dmarc_extras %}
+{% block cardtitle %}SPF Authentication{% endblock %}
+{% block cardtablerows %}
+<tr>
+    <td>Domain</td>
+    <td>{{ spf.domain|default_if_none:"" }}</td>
+</tr>
+<tr>
+    <td>Scope</td>
+    <td>{{ spf.scope|default_if_none:"" }}</td>
+</tr>
+<tr>
+    <td>Result</td>
+    <td>{% if spf.result == "pass" %}{% include "pass_icon.html" with class=pass_icon_class %}{% else %}{% include "fail_icon.html" with class=fail_icon_class title=spf.result %}{% endif %}</td>
+</tr>
+{% endblock %}
+{% block cardextra %}
+{{ spf|class_help_text }}
+{% endblock %}

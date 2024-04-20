@@ -1,0 +1,17 @@
+<nav class="absolute top-5 w-full flex flex-row justify-center z-50 ">
+    <div class="bg-gray-800 text-white rounded-xl shadow-lg px-4 py-2 flex flex-row items-center gap-4">
+        <a hx-get={% url 'index' %} class="block cursor-pointer text-4xl font-display font-bold mb-2 hover:no-underline text-gray-50" hx-target="#main" hx-swap="outerHTML" hx-push-url="true">marc</a>
+
+        <div class="flex flex-row gap-2 justify-center items-center">
+            {% include 'collect_button.html' %}
+            {% include 'file_form.html' %}
+            <a class="p-2 rounded bg-gray-600 text-gray-50" href="{% url 'config' %}" title="Configuration">{% include "cog_icon.html" %}</a>
+        </div>
+        {% with a_class="block cursor-pointer py-2 px-4 rounded hover:no-underline hover:bg-gray-100 transition-colors text-gray-50 hover:text-gray-800" %}
+        <div class="flex flex-row justify-between p-1 gap-1 items-stretch">
+            <a class="{{ a_class }}" hx-get="{% url 'feedback-list' %}" hx-target="#main" hx-swap="outerHTML" hx-push-url="true">Feedbacks</a>
+            <a class="{{ a_class }}" hx-get="{% url 'record-list' %}" hx-target="#main" hx-swap="outerHTML" hx-push-url="true">Records</a>
+        </div>
+        {% endwith %}
+    </div>
+</nav>

@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% block maincontent %}
+<div class="w-full flex flex-row items-stretch gap-5">
+    {% include "report_metadata.html" with report_metadata=feedback.report_metadata %}
+    {% include "policy_published.html" with policy_published=feedback.policy_published %}
+</div>
+{% comment %} <div class="w-full flex flex-row items-stretch gap-5">
+    {% include "auth_results.html" with title="SPF Authentication" id="spf-results" labels=spf_result_types data=spf_results background_colors=spf_background_colors %}
+    {% include "auth_results.html" with title="DKIM Authentication" id="dkim-results" labels=dkim_result_types data=dkim_results background_colors=dkim_background_colors %}
+</div> {% endcomment %}
+<div class="w-full">
+    {% include "feedback_records.html" with feedback=feedback %}
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "card.html" %}
+{% block cardclassextra %}grow{% endblock %}
+{% block cardcontent %}
+<div class="flex flex-col gap-2">
+    <h2 class="text-xl font-bold">Policy published</h2>
+    <table class="feedback-metadata-table border-separate border-spacing-x-2">
+        <tr title="{{ policy_published.domain.help_text }}">
+            <td>domain</td>
+            <td>{{ policy_published.domain }}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>adkim</td>
+            <td class="font-mono">{{ policy_published.adkim }}</td>
+            <td>{% include "help_icon.html" with title=policy_published.adkim_help_text %}</td>
+        </tr>
+        <tr>
+            <td>aspf</td>
+            <td class="font-mono">{{ policy_published.aspf }}</td>
+            <td>{% include "help_icon.html" with title=policy_published.aspf_help_text %}</td>
+        </tr>
+        <tr>
+            <td>p</td>
+            <td class="font-mono">{{ policy_published.p }}</td>
+            <td>{% include "help_icon.html" with title=policy_published.p_help_text %}</td>
+        </tr>
+        <tr>
+            <td>sp</td>
+            <td class="font-mono">{% if policy_published.sp %} {{ policy_published.sp }} {% endif %}</td>
+            <td>{% include "help_icon.html" with title=policy_published.sp_help_text %}</td>
+        </tr>
+        <tr>
+            <td>pct</td>
+            <td class="font-mono">{{ policy_published.pct }}</td>
+            <td>{% include "help_icon.html" with title=policy_published.pct_help_text %}</td>
+        </tr>
+        <tr>
+            <td>fo</td>
+            <td class="font-mono">{% if policy_published.fo %} {{ policy_published.fo }} {% endif %}</td>
+            <td>{% include "help_icon.html" with title=policy_published.fo_help_text %}</td>
+        </tr>
+        <tr>
+            <td>np</td>
+            <td class="font-mono">{% if policy_published.np %} {{ policy_published.np }} {% endif %}</td>
+            <td>{% include "help_icon.html" with title=policy_published.np_help_text %}</td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

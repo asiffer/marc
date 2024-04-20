@@ -1,0 +1,10 @@
+{% extends "main.html" %}
+
+{% block maincontent %}
+<div class="w-full flex flex-row justify-start">
+    <h1 class="text-4xl font-bold">Config</h1>
+</div>
+<div class="relative">
+    <form hx-get="{% url 'config-form' %}" hx-swap="outerHTML" hx-trigger="load"></form>
+</div>
+{% endblock %}

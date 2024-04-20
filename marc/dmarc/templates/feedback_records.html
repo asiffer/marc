@@ -1,0 +1,29 @@
+{% extends "card.html" %}
+{% block cardclassextra %}{% endblock %}
+{% block cardcontent %}
+<div class="flex flex-col gap-2">
+    <h2 class="text-xl font-bold">Records</h2>
+    <table class="w-full text-sm">
+        <thead>
+            {% with td_class="p-2 text-right" %}
+            <tr class="border-b border-b-gray-100 font-medium font-mono">
+                <td class="{{ td_class }}">envelope_to</td>
+                <td class="{{ td_class }}">envelope_from</td>
+                <td class="{{ td_class }}">header_from</td>
+                <td class="{{ td_class }}">source_ip</td>
+                <td class="{{ td_class }}">count</td>
+                <td class="{{ td_class }}">disposition</td>
+                <td class="{{ td_class }}">spf</td>
+                <td class="{{ td_class }}">dkim</td>
+                <td class="{{ td_class }}">dmarc</td>
+            <tr>
+            {% endwith %}
+        </thead>
+        <tbody class="text-gray-600">
+        {% for record in feedback.record.all %}
+            {% include "record_row.html" with record=record %}
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

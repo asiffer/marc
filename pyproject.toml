@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "marc"
+version = "0.1.0"
+description = "DMARC report viewer"
+authors = ["Alban Siffer <31479857+asiffer@users.noreply.github.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.0.4"
+pydantic = "^2.6.4"
+markdown = "^3.6"
+colorama = "^0.4.6"
+tzlocal = "^5.2"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.3.5"
+xsdata = { extras = ["cli"], version = "^24.4" }
+invoke = "^2.2.0"
+requests = "^2.31.0"
+toposort = "^1.10"
+ipython = "^8.23.0"
+pytest = "^8.1.1"
+
+[tool.poetry.scripts]
+marc = 'marc.__main__:main'
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

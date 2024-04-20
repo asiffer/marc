@@ -1,0 +1,14 @@
+{% load dmarc_extras %}
+{% with td_class="p-2 text-right group-hover:bg-gray-100 overflow-hidden cursor-pointer transition-colors duration-100" %}
+<tr class="{{ class }} group" hx-get="{% url 'feedback-details' feedback.id %}" hx-swap="outerHTML" hx-target="#main" hx-push-url="true">
+    <td class="{{ td_class }} font-mono rounded-l-lg truncate max-w-[100px]" title="{{ feedback.report_metadata.report_id }}">{{ feedback.report_metadata.report_id }}</td>
+    <td class="{{ td_class }}">{{ feedback.report_metadata.org_name }}</td>
+    <td class="{{ td_class }}">{{ feedback.report_metadata.date_range_begin }}</td>
+    <td class="{{ td_class }}">{{ feedback.report_metadata.date_range_end }}</td>
+    <td class="{{ td_class }}">{{ feedback.auth.spf|stringformat:".1f" }}%</td>
+    <td class="{{ td_class }}">{{ feedback.auth.dkim|stringformat:".1f" }}%</td>
+    <td class="{{ td_class }}">{{ feedback.dmarc.spf|stringformat:".1f" }}%</td>
+    <td class="{{ td_class }}">{{ feedback.dmarc.dkim|stringformat:".1f" }}%</td>
+    <td class="{{ td_class }} font-semibold rounded-r-lg {% if feedback.dmarc.overall == 100 %}text-emerald-500{% else %}text-red-500{% endif %}">{{ feedback.dmarc.overall|stringformat:".1f" }}%</td>
+</tr>
+{% endwith %}

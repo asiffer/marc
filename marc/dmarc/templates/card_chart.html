@@ -1,0 +1,35 @@
+{% extends "card.html" %}{% load dmarc_extras %}
+{% block cardcontent %}
+{% random_string as id %}
+<div class="flex flex-col gap-3">
+    <div class="flex flex-col gap-1">
+        <h2 class="text-xl font-bold">{% block cardtitle %}{{ title }}{% endblock %}</h2>
+        <h3 class="text-gray-400">{% block cardsubtitle %}{{ subtitle }}{% endblock %}</h3>
+    </div>
+    <div class="{{ class }}">
+        <canvas id="{{ id }}"></canvas>
+    </div>    
+</div>
+<script>
+    new Chart(document.getElementById("{{ id }}").getContext("2d"), {
+        type: "doughnut",
+        data: {
+          labels: {{ labels|jsonify }},
+          datasets: [
+            {
+              data: {{ data|jsonify }},
+              hoverOffset: 4,
+              backgroundColor: {{ background_colors|jsonify }}
+            },
+          ],
+        },
+        options: {
+          plugins: {
+            legend : {
+              display: false,
+            }
+          }
+        }
+      });
+</script>
+{% endblock %}

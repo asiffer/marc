@@ -1,0 +1,23 @@
+{% extends "card_table.html" %}{% load dmarc_extras %}
+{% block cardtitle %}DKIM Authentication{% endblock %}
+{% block cardtablerows %}
+<tr>
+    <td>Domain</td>
+    <td>{{ dkim.domain|default_if_none:"" }}</td>
+</tr>
+<tr>
+    <td>Selector</td>
+    <td>{{ dkim.selector|default_if_none:"" }}</td>
+</tr>
+<tr>
+    <td>Result</td>
+    <td>{% if dkim.result == "pass" %}{% include "pass_icon.html" with class=pass_icon_class %}{% else %}{% include "fail_icon.html" with class=fail_icon_class title=dkim.result %}{% endif %}</td>
+</tr>
+<tr>
+    <td>Information</td>
+    <td>{{ dkim.human_result|default_if_none:"" }}</td>
+</tr>
+{% endblock %}
+{% block cardextra %}
+{{ dkim|class_help_text }}
+{% endblock %}

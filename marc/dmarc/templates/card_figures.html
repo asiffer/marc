@@ -1,0 +1,11 @@
+{% extends "card.html" %}{% load dmarc_extras %}
+{% block cardcontent %}
+<div class="w-full flex flex-col gap-1">
+    <div class="w-full text-right {% if small %}text-2xl{% else %}text-6xl{% endif %} font-mono font-extrabold">
+        {{ value }}
+    </div>
+    <div class="flex flex-row justify-end">
+        <h2 class="{% if small %}text-sm{% else %}text-xl{% endif %} text-gray-500">{{ title }}</h2>
+    </div>    
+</div>
+{% endblock %}

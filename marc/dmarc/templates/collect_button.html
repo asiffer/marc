@@ -1,0 +1,10 @@
+<div id="collect"
+    class="p-2 rounded text-gray-800 bg-white cursor-pointer" 
+    hx-post="{% url 'collect' %}" 
+    hx-target="#collect"
+    hx-swap="outerHTML"
+    title="Collect reports locally">
+    {% include "spinner.html" with class="h-6 w-6 htmx-indicator" %}
+    {% include "bolt_icon.html" with class="h-6 w-6 not-htmx-indicator" %}
+    {% include "messages.html" %}
+</div>

@@ -1,0 +1,14 @@
+{% extends "card_table.html" %}{% load dmarc_extras %}
+{% block cardtitle %}Row{% endblock %}
+{% block cardtablerows %}
+<tr>
+    <td>Source IP</td>
+    <td class="font-mono">{{ row.source_ip }} ({{ row.domain }})</td>
+</tr>
+<tr>
+    <td>Count</td>
+    <td class="font-mono">{{ row.count }}</td>
+</tr>
+{% endblock %}
+{% block cardextra %}
+{% endblock %}

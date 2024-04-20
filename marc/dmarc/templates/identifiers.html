@@ -1,0 +1,18 @@
+{% extends "card_table.html" %}{% load dmarc_extras %}
+{% block cardtitle %}Identifiers{% endblock %}
+{% block cardtablerows %}
+<tr>
+    <td>Envelope to</td>
+    <td>{{ identifiers.envelope_to|default_if_none:"" }}</td>
+</tr>
+<tr>
+    <td>Envelope from</td>
+    <td>{{ identifiers.envelope_from|default_if_none:"" }}</td>
+</tr>
+<tr>
+    <td>Header from</td>
+    <td>{{ identifiers.header_from|default_if_none:"" }}</td>
+</tr>
+{% endblock %}
+{% block cardextra %}
+{% endblock %}

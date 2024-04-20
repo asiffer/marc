@@ -1,0 +1,32 @@
+{% extends "card.html" %}
+{% block cardcontent %}
+<div class="flex flex-col gap-2">
+    <h2 class="text-xl font-bold">Report metadata</h2>
+    <table class="feedback-metadata-table w-full border-separate border-spacing-x-2">
+        <tr>
+            <td>Report ID</td>
+            <td class="font-mono">{{ report_metadata.report_id }}</td>
+        </tr>
+        <tr>
+            <td>Organization</td>
+            <td>{{ report_metadata.org_name }}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><a href="mailto:{{ report_metadata.email }}">{{ report_metadata.email }}</a></td>
+        </tr>
+        <tr>
+            <td>Info</td>
+            <td><a href="{{ report_metadata.extra_contact_info }}">{{ report_metadata.extra_contact_info }}</a></td>
+        </tr>
+        <tr>
+            <td>Start</td>
+            <td>{{ report_metadata.date_range_begin }}</td>
+        </tr>
+        <tr>
+            <td>End</td>
+            <td>{{ report_metadata.date_range_end }}</td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

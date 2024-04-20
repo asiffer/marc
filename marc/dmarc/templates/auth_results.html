@@ -1,0 +1,13 @@
+{% extends "card.html" %}
+{% block cardclassextra %}{% endblock %}
+{% block cardcontent %}
+{% with pass_icon_class="h-5 inline-block stroke-emerald-500" fail_icon_class="h-5 inline-block stroke-red-500" %}
+<div class="flex flex-col gap-5">
+    <h2 class="text-xl font-bold">Authentication</h2>
+    <div class="flex flex-row gap-3">
+        <div class="flex flex-row items-center gap-1"><span>SPF</span>{% if auth_results.spf.result == "pass" %}{% include "pass_icon.html" with class=pass_icon_class %}{% else %}{% include "fail_icon.html" with class=fail_icon_class %}{% endif %}</div>
+        <div class="flex flex-row items-center gap-1"><span>DKIM</span>{% if auth_results.dkim.result == "pass" %}{% include "pass_icon.html" with class=pass_icon_class %}{% else %}{% include "fail_icon.html" with class=fail_icon_class %}{% endif %}</div>
+    </div>
+</div>
+{% endwith %}
+{% endblock %}
