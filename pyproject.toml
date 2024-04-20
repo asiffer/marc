@@ -13,10 +13,10 @@ pydantic = "^2.6.4"
 markdown = "^3.6"
 colorama = "^0.4.6"
 tzlocal = "^5.2"
+xsdata = { extras = ["cli"], version = "^24.4" }
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.3.5"
-xsdata = { extras = ["cli"], version = "^24.4" }
 invoke = "^2.2.0"
 requests = "^2.31.0"
 toposort = "^1.10"
