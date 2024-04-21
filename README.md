@@ -7,6 +7,8 @@
 
 ## Installation
 
+You need python `>=3.10`.
+
 ```shell
 pip install git+https://github.com/asiffer/marc
 ```
