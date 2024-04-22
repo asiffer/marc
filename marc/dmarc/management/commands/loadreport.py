@@ -24,7 +24,7 @@ class Command(BaseCommand):
     ):
         # see https://docs.python.org/3/library/logging.html#logging-levels
         logger.setLevel(40 - 10 * verbosity)
-        #
+
         total = 0
         for r in report:
             if os.path.isdir(r):
