@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "marc"
-version = "0.1.0"
+version = "0.2.0"
 description = "DMARC report viewer"
 authors = ["Alban Siffer <31479857+asiffer@users.noreply.github.com>"]
 license = "MIT"
