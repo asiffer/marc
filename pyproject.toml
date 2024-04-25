@@ -3,7 +3,7 @@ name = "marc"
 version = "0.2.0"
 description = "DMARC report viewer"
 authors = ["Alban Siffer <31479857+asiffer@users.noreply.github.com>"]
-license = "MIT"
+license = "AGPLv3"
 readme = "README.md"
 
 [tool.poetry.dependencies]
