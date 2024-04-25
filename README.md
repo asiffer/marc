@@ -17,19 +17,29 @@ pip install git+https://github.com/asiffer/marc
 
 First you must init the database (migration)
 
-```
+```shell
 marc migrate
 ```
 
 Then you can start the server and visit [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
-```
+```shell
 marc runserver
 ```
 
-Then you can either add reports manually ("plus" button) or define search directories in the config panel (and trigger with the "blitz button").
+Then you can either add reports (a.k.a. feedbacks) manually ("plus" button) or define search directories in the config panel (and trigger with the "blitz button").
 
 ![Config panel](/assets/config.png)
+
+You can remove all the reports by invoking `cleanall`:
+
+```shell
+marc cleanall
+```
+
+> [!IMPORTANT]  
+> You can even remove the database (location is given while running `runserver`) but you will have to call `init` to recreate it.
+
 
 ## Details
 
