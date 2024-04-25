@@ -284,8 +284,10 @@ class ReportMetadata(models.Model):
 
     error = models.JSONField()
 
-    feedback = models.ForeignKey(
-        Feedback, on_delete=models.CASCADE, related_name="report_metadata"
+    feedback = models.OneToOneField(
+        Feedback,
+        on_delete=models.CASCADE,
+        related_name="report_metadata",
     )
 
 
