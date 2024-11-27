@@ -44,19 +44,18 @@ jobs:
     needs: build
     name: Run marc.pyz zipapp
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: ["3.10", "3.11", "3.12", "3.13"]
     steps:
       - name: "Set up Python"
         uses: actions/setup-python@v5
         with:
-            python-version: '3.13'
+            python-version: ${{ matrix.version }}
       - uses: actions/download-artifact@v4
         name: Download marc.pyz file
         with:
             name: dist
             path: .
-      - name: Debug
-        run: |
-            ls -alh --color=auto . 
-            ls -alh --color=auto */*
       - name: Run the app
-        run: python dist/marc.pyz migrate
+        run: python marc.pyz migrate
