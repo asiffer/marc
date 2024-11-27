@@ -38,6 +38,7 @@ jobs:
         with:
           path: marc.pyz
   run:
+    needs: build
     name: Run marc.pyz zipapp
     runs-on: ubuntu-latest
     steps:
