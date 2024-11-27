@@ -38,6 +38,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
+          name: dist
           path: marc.pyz
   run:
     needs: build
@@ -51,10 +52,11 @@ jobs:
       - uses: actions/download-artifact@v4
         name: Download marc.pyz file
         with:
+            name: dist
             path: .
       - name: Debug
         run: |
             ls -alh --color=auto . 
             ls -alh --color=auto */*
       - name: Run the app
-        run: python marc.pyz migrate
+        run: python dist/marc.pyz migrate
