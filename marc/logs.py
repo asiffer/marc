@@ -29,7 +29,7 @@ class ServerFormatter(logging.Formatter):
     def format(self, record: logging.LogRecord) -> str:
         # backup values
         msg = record.msg
-        args = tuple(record.args)
+        args = tuple(record.args)  # type: ignore
 
         col = Fore.RESET
         if record.status_code >= 200 and record.status_code < 300:

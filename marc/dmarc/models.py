@@ -8,6 +8,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.db.models import Count, F, Q
+from django.db.models.options import Options
 
 DEFAULT_MAX_LENGTH = 4096
 
@@ -23,6 +24,8 @@ def validate_directories(directories: str):
 
 
 class HelpTextMixin:
+    _meta: Options
+
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
@@ -41,6 +44,7 @@ class HelpTextMixin:
         for field in self._meta.fields:
             if field.name == field_name:
                 return field.help_text
+        return None
 
 
 class AlignmentType(models.TextChoices):
@@ -497,7 +501,9 @@ class Config(models.Model):
     )
 
     def dirlist(self) -> List[str]:
-        return [v.strip() for v in self.directories.split("\n") if v.strip() != ""]
+        if self.directories:
+            return [v.strip() for v in self.directories.split("\n") if v.strip() != ""]
+        return []
 
 
 def get_config() -> Config:
