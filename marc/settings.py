@@ -50,13 +50,13 @@ LOGGING = {
         "color": {
             "format": f"{Style.DIM}[%(asctime)s.%(msecs)03d]{Style.RESET_ALL} %(levelname)s %(message)s",
             "style": "%",
-            "class": "marc.logging.MarcFormatter",
+            "class": "marc.logs.MarcFormatter",
             "datefmt": "%H:%M:%S",
         },
         "request": {
             "format": f"{Style.DIM}[%(asctime)s.%(msecs)03d]{Style.RESET_ALL} %(message)s",
             "style": "%",
-            "class": "marc.logging.ServerFormatter",
+            "class": "marc.logs.ServerFormatter",
             "datefmt": "%H:%M:%S",
         },
     },
@@ -161,7 +161,7 @@ LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = get_localzone().key
 
-USE_I18N = True
+USE_I18N = False
 
 USE_TZ = True
 
