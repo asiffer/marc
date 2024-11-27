@@ -1,31 +1,46 @@
-[tool.poetry]
+[project]
 name = "marc"
-version = "0.2.0"
-description = "DMARC report viewer"
-authors = ["Alban Siffer <31479857+asiffer@users.noreply.github.com>"]
-license = "AGPLv3"
+version = "0.3.0"
+description = "DMARC reports viewer"
+authors = [
+    { name = "Alban Siffer", email = "31479857+asiffer@users.noreply.github.com" },
+]
+license = { text = "AGPLv3" }
 readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "colorama>=0.4.6",
+    "django>=5.1.3",
+    "markdown>=3.7",
+    "pydantic>=2.10.2",
+    "tzlocal>=5.2",
+    "xsdata[cli]>=24.11",
+]
 
-[tool.poetry.dependencies]
-python = ">=3.10,<4.0"
-django = "^5.0.4"
-pydantic = "^2.6.4"
-markdown = "^3.6"
-colorama = "^0.4.6"
-tzlocal = "^5.2"
-xsdata = { extras = ["cli"], version = "^24.4" }
+[dependency-groups]
+dev = [
+    "django-stubs[compatible-mypy]>=5.1.1",
+    "invoke>=2.2.0",
+    "ipython>=8.29.0",
+    "mypy>=1.13.0",
+    "pyoxidizer>=0.24.0",
+    "pytest>=8.3.3",
+    "requests>=2.32.3",
+    "toposort>=1.10",
+    "types-colorama>=0.4.15.20240311",
+]
 
-[tool.poetry.group.dev.dependencies]
-ruff = "^0.3.5"
-invoke = "^2.2.0"
-requests = "^2.31.0"
-toposort = "^1.10"
-ipython = "^8.23.0"
-pytest = "^8.1.1"
+[project.scripts]
+marc = "marc.__main__:main"
 
-[tool.poetry.scripts]
-marc = 'marc.__main__:main'
+[tool.setuptools]
+packages = ["marc"]
 
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[tool.mypy]
+plugins = ["mypy_django_plugin.main"]
+
+[tool.uv]
+package = true
+
+[tool.django-stubs]
+django_settings_module = "marc.settings"
