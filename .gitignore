@@ -1,0 +1,12 @@
+tasks.py
+*.xsd
+dev/
+.vscode
+.venv
+.pytest*
+tests/data/*.gz
+tests/data/*.gzip
+tests/data/*.zip
+__pycache__
+db.sqlite*
+unit
