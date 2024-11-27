@@ -32,7 +32,7 @@ jobs:
             cp marc/__main__.py /tmp/out/__main__.py
     
       - name: Zipapp
-        run: uv run python -m zipapp /tmp/out -p '/usr/bin/env python' -o marc.pyz
+        run: uv run python -m zipapp /tmp/out -p '/usr/bin/env python' -o marc.pyz --compress
 
       - uses: actions/upload-artifact@v4
         with:
